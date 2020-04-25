@@ -10,30 +10,28 @@ export default class ImageGalleryItem extends Component {
       modalWindow: true,
     });
   };
-  closeModal = (e) => { if (e.target.nodeName === "DIV" || e.code === "Escape")
-   { this.setState({
-      modalWindow: false,
-    })};}
-    render()
-    {
-      const { webformatURL, tags, largeImageURL} = this.props;
-      const { modalWindow } = this.state;
-      return (
-        
-          <li className="ImageGalleryItem" >
-            <img
-              src={webformatURL}
-              alt={tags}
-              className="ImageGalleryItem-image"
-              onClick={this.handleModalOn}
-            />
-            {modalWindow && (
-            <Modal src={largeImageURL} closeModal={this.closeModal} />
-          )}
-        
-          </li>
-          
-      );
+  closeModal = (e) => {
+    if (e.target.nodeName === "DIV" || e.code === "Escape") {
+      this.setState({
+        modalWindow: false,
+      });
     }
   };
-
+  render() {
+    const { webformatURL, tags, largeImageURL } = this.props;
+    const { modalWindow } = this.state;
+    return (
+      <li className="ImageGalleryItem">
+        <img
+          src={webformatURL}
+          alt={tags}
+          className="ImageGalleryItem-image"
+          onClick={this.handleModalOn}
+        />
+        {modalWindow && (
+          <Modal src={largeImageURL} closeModal={this.closeModal} />
+        )}
+      </li>
+    );
+  }
+}

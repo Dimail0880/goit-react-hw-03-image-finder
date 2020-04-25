@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Searchbar from "./Components/Searchbar/Searchbar";
 import axios from "axios";
 import key from "./helpers/Pixaby/pixaby";
@@ -14,15 +14,19 @@ const App = () => {
   const [currentPage, setCurrentPage] = useState(1);
 
   const updateParams = () => {
-    setPics([]); // тут я очищаю массив обьектов с картинками перед новым поиском, но он почему-то не очищается... need help
-    setCurrentPage(1);
-    setQuiz("");
+    if (pics.length){
+      setPics(pics.length = 0 ); 
+    }
+       setCurrentPage(1);
   };
 
   const onSubmit = (e) => {
     e.preventDefault();
     updateParams();
-    getPics(currentPage);
+    if(quiz) {
+      getPics(currentPage);
+    }
+    
   };
 
   const inputChange = (e) => {
@@ -39,7 +43,7 @@ const App = () => {
       const response = await axios.get(
         `https://pixabay.com/api/?q=${quiz}&page=${page}&key=${key}&image_type=photo&orientation=horizontal&per_page=12`
       );
-      setPics([...pics, ...response.data.hits]);
+     setPics([...pics, ...response.data.hits])
     } catch (error) {
       setError(error);
     } finally {
@@ -52,6 +56,9 @@ const App = () => {
     setCurrentPage(newPage);
     getPics(newPage);
   };
+
+  
+ 
 
   return (
     <div className="App">
