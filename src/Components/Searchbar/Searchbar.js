@@ -1,6 +1,6 @@
 import React from "react";
 
-const Searchbar = ({ onSubmit, quiz, inputChange }) => {
+const Searchbar = ({ onSubmit, query, inputChange }) => {
   return (
     <header className="Searchbar">
       <form className="SearchForm" onSubmit={onSubmit}>
@@ -14,7 +14,7 @@ const Searchbar = ({ onSubmit, quiz, inputChange }) => {
           autoComplete="off"
           autoFocus="on"
           placeholder="Search images and photos"
-          value={quiz}
+          value={query}
           onChange={inputChange}
         />
       </form>

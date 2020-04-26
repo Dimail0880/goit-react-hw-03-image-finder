@@ -7,7 +7,7 @@ const Button = ({onClick}) => {
       });
     return (
         <>
-        <button onClick={onClick}>LOAD MORE</button>
+        <button className='Button' onClick={onClick}>LOAD MORE</button>
         </>
     );
 };

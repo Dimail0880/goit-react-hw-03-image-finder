@@ -7,6 +7,7 @@ export default class LoaderApp extends React.Component {
   render() {
     return (
       <Loader
+        margin="auto"
         type="Puff"
         color="#00BFFF"
         height={100}
